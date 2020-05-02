@@ -20,6 +20,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>
+    @if(config('app.env') == 'local')
+      <script src="http://localhost:35729/livereload.js"></script>
+    @endif
     <div id="app">
       <example-component></example-component>
     </div>
