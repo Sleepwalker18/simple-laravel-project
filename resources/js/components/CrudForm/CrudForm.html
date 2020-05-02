@@ -1,0 +1,45 @@
+<section class="crud-form">
+	<h1>crud-form Component</h1>
+	<div class="row">
+    <div class="col-md-6">
+      <h2>Lista de contactos</h2>
+      <table class="table text-center"><!--Creamos una tabla que mostrará todos los contactos-->
+        <thead>
+          <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="contact in contacts" :key="contact.id"> 
+            <td v-text="contact.first_name"></td>
+            <td v-text="contact.last_name"></td>
+            <td v-text="contact.email"></td>
+            <td>
+                <!--Botón modificar, que carga los datos del formulario con la tarea seleccionada-->
+               <!-- <button class="btn" @click="loadFieldsUpdate(task)">Modificar</button> -->
+               <button class="btn btn-danger" @click="deleteContact(contact)">Borrar</button> 
+            </td>
+          </tr>
+        </tbody>
+    	</table>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group"><!-- Formulario para la creación o modificación de nuestras tareas-->
+        <label>Nombre</label>
+        <input v-model="first_name" type="text" class="form-control">
+
+        <label>Apellido</label>
+        <input v-model="last_name" type="text" class="form-control">
+
+        <label>Email</label>
+        <input v-model="email" type="text" class="form-control">
+      </div>
+      <div class="container-buttons">
+      	<!-- Botón que añade los datos del formulario, solo se muestra si la variable update es igual a 0-->
+        <button @click="saveContact()" class="btn btn-success">Añadir</button>
+      </div>
+    </div>
+  </div>
+</section>

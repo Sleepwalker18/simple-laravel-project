@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contacts', 'ContactController@index');
+Route::put('/contacts/update', 'ContactController@update');
+Route::post('/contacts/save', 'ContactController@store');
+Route::delete('/contacts/delete/{id}', 'ContactController@destroy');
+Route::get('/contacts/search', 'ContactController@show');
