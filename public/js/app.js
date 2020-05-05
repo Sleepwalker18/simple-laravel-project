@@ -1965,7 +1965,7 @@ __webpack_require__.r(__webpack_exports__);
 
   methods: {
     getContacts() {
-      axios.get('/contacts').then(res => {
+      axios.get('/api/contacts').then(res => {
         this.contacts = res.data;
       }).catch(err => {
         console.log(err);
@@ -1973,7 +1973,15 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     saveContact() {
-      axios.post('/contacts/save', this.formData).then(res => {
+      axios.post('/api/contacts/save', this.formData).then(res => {
+        this.getContacts();
+      }).catch(err => {
+        console.log(err);
+      });
+    },
+
+    updateContact(id_contact) {
+      axios.put(`/api/contacts/update/${id_contact.id}`, this.formData).then(res => {
         this.getContacts();
       }).catch(err => {
         console.log(err);
@@ -1981,7 +1989,7 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     deleteContact(id_contact) {
-      axios.delete(`/contacts/delete/${id_contact.id}`).then(res => {
+      axios.delete(`/api/contacts/delete/${id_contact.id}`).then(res => {
         this.getContacts();
       }).catch(err => {
         console.log(err);
@@ -37886,6 +37894,19 @@ var render = function() {
                   _c(
                     "button",
                     {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function($event) {
+                          return _vm.updateContact(contact)
+                        }
+                      }
+                    },
+                    [_vm._v("Modificar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
                       staticClass: "btn btn-danger",
                       on: {
                         click: function($event) {
@@ -38007,7 +38028,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acciones")])
       ])
     ])
   }

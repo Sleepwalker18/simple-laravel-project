@@ -9,6 +9,7 @@
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
               <th scope="col">Email</th>
+              <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -18,7 +19,7 @@
             <td v-text="contact.email"></td>
             <td>
                 <!--Botón modificar, que carga los datos del formulario con la tarea seleccionada-->
-               <!-- <button class="btn" @click="loadFieldsUpdate(task)">Modificar</button> -->
+               <button class="btn btn-primary" @click="updateContact(contact)">Modificar</button>
                <button class="btn btn-danger" @click="deleteContact(contact)">Borrar</button> 
             </td>
           </tr>
