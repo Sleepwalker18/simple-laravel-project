@@ -64,6 +64,7 @@ class ContactController extends Controller
     public function show($id)
     {
       $contact = Contact::findOrFail($request->id);
+      
       return $contact;
     }
 
@@ -89,13 +90,19 @@ class ContactController extends Controller
     {
       $contact = Contact::findOrFail($request->id);
 
+      $request->validate([
+        'first_name'=>'required',
+        'last_name'=>'required',
+        'email'=>'required'
+      ]);
+
       $contact->first_name = $request->first_name;
       $contact->last_name = $request->last_name;
       $contact->email = $request->email;
 
       $contact->save();
 
-      return $contact;
+      return response('User updated', 201);
 
     }
 
@@ -108,6 +115,7 @@ class ContactController extends Controller
     public function destroy(Request $request)
     {
       $contact = Contact::destroy($request->id);
+
       return response('User deleted', 201);
     }
 }
