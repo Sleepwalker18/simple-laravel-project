@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getContacts() {
-      axios.get('/contacts').then( res => {
+      axios.get('/api/contacts').then( res => {
         this.contacts = res.data
       })
       .catch(err => {
@@ -33,7 +33,7 @@ export default {
     },
 
     saveContact() {
-      axios.post('/contacts/save', this.formData).then( res => {
+      axios.post('/api/contacts/save', this.formData).then( res => {
         this.getContacts()
       })
       .catch(err => {
@@ -42,7 +42,7 @@ export default {
     },
 
     deleteContact(id_contact) {
-      axios.delete(`/contacts/delete/${id_contact.id}`).then( res => {
+      axios.delete(`/api/contacts/delete/${id_contact.id}`).then( res => {
         this.getContacts()
       })
       .catch(err => {
