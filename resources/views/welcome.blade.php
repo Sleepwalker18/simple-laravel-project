@@ -24,7 +24,7 @@
       <script src="http://localhost:35729/livereload.js"></script>
     @endif
     <div id="app">
-      <home-view></home-view>
+      <router-view></router-view>
     </div>
   </body>
 </html>
