@@ -7,6 +7,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuex from 'vuex';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+import { router } from './routes.js';
+import { store } from './store.js'
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,5 +35,23 @@ Vue.component('home-view', require('./views/HomeView.vue').default);
  */
 
 const app = new Vue({
-    el: '#app',
+  el: '#app',
+  router,
+  store,
+  created () {
+    const userInfo = localStorage.getItem('user')
+    if (userInfo) {
+      const userData = JSON.parse(userInfo)
+      this.$store.commit('setUserData', userData)
+    }
+    axios.interceptors.response.use(
+      response => response,
+      error => {
+        if (error.response.status === 401) {
+          this.$store.dispatch('logout')
+        }
+        return Promise.reject(error)
+      }
+    )
+  },
 });
