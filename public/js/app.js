@@ -54747,6 +54747,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js");
 /* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store.js */ "./resources/js/store.js");
+/* harmony import */ var _utils_userMixin_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/userMixin.js */ "./resources/js/utils/userMixin.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -54758,6 +54759,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
 
 
 /**
@@ -54781,26 +54783,7 @@ var app = new Vue({
   el: '#app',
   router: _routes_js__WEBPACK_IMPORTED_MODULE_2__["router"],
   store: _store_js__WEBPACK_IMPORTED_MODULE_3__["store"],
-  created: function created() {
-    var _this = this;
-
-    var userInfo = localStorage.getItem('user');
-
-    if (userInfo) {
-      var userData = JSON.parse(userInfo);
-      this.$store.commit('setUserData', userData);
-    }
-
-    axios.interceptors.response.use(function (response) {
-      return response;
-    }, function (error) {
-      if (error.response.status === 401) {
-        _this.$store.dispatch('logout');
-      }
-
-      return Promise.reject(error);
-    });
-  }
+  userMixin: _utils_userMixin_js__WEBPACK_IMPORTED_MODULE_4__["userMixin"]
 });
 
 /***/ }),
@@ -55054,6 +55037,41 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     }
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/utils/userMixin.js":
+/*!*****************************************!*\
+  !*** ./resources/js/utils/userMixin.js ***!
+  \*****************************************/
+/*! exports provided: userMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userMixin", function() { return userMixin; });
+var userMixin = {
+  created: function created() {
+    var _this = this;
+
+    var userInfo = localStorage.getItem('user');
+
+    if (userInfo) {
+      var userData = JSON.parse(userInfo);
+      this.$store.commit('setUserData', userData);
+    }
+
+    axios.interceptors.response.use(function (response) {
+      return response;
+    }, function (error) {
+      if (error.response.status === 401) {
+        _this.$store.dispatch('logout');
+      }
+
+      return Promise.reject(error);
+    });
+  }
+};
 
 /***/ }),
 
