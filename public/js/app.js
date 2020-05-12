@@ -54783,7 +54783,7 @@ var app = new Vue({
   el: '#app',
   router: _routes_js__WEBPACK_IMPORTED_MODULE_2__["router"],
   store: _store_js__WEBPACK_IMPORTED_MODULE_3__["store"],
-  userMixin: _utils_userMixin_js__WEBPACK_IMPORTED_MODULE_4__["userMixin"]
+  mixins: [_utils_userMixin_js__WEBPACK_IMPORTED_MODULE_4__["default"]]
 });
 
 /***/ }),
@@ -55044,12 +55044,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*!*****************************************!*\
   !*** ./resources/js/utils/userMixin.js ***!
   \*****************************************/
-/*! exports provided: userMixin */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userMixin", function() { return userMixin; });
 var userMixin = {
   created: function created() {
     var _this = this;
@@ -55072,6 +55071,7 @@ var userMixin = {
     });
   }
 };
+/* harmony default export */ __webpack_exports__["default"] = (userMixin);
 
 /***/ }),
 

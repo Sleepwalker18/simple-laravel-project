@@ -33,4 +33,24 @@ class UserController extends Controller
     return response($response, 201);
 
   }
+
+  public function store(Request $request) {
+
+    $request->validate([
+      'email' => 'required|email',
+      'password' => 'required'
+    ]);
+
+    $user = User::create([
+      'name' => $request->get('name'),
+      'email' => $request->get('email'),
+      'password' => $request->get('password'),
+    ]);
+
+    $user->save();
+
+    return response('User created', 201);
+
+  }
+
 }

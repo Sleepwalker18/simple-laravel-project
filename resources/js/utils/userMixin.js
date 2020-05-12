@@ -1,4 +1,4 @@
-export const userMixin ={
+const userMixin ={
 
 	created () {
 	  const userInfo = localStorage.getItem('user')
@@ -18,3 +18,5 @@ export const userMixin ={
 	}
 
 }
+
+export default userMixin;
