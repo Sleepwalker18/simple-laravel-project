@@ -1,6 +1,6 @@
 
 export default {
-  name: 'auth-form',
+  name: 'login-form',
   components: {},
   props: [],
   data () {

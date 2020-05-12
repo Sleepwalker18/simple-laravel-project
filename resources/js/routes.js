@@ -27,6 +27,10 @@ export const router = new VueRouter({
     	meta: {
 	    	auth: true
 	    },
+	  },
+	  { 
+	  	path: "*", 
+	  	redirect: "/" 
 	  }
 	]
 })
