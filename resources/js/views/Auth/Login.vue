@@ -1,13 +1,13 @@
 <template>
 	<div class="container mt-5">
-		<AuthForm/>
+		<LoginForm/>
 	</div>
 </template>
 
 
 <script type="text/javascript">
 
-	import AuthForm from './../../components/AuthForm/index.vue';
+	import LoginForm from './../../components/LoginForm/index.vue';
 	import { mapGetters } from 'vuex'
 
 	export default {
@@ -31,7 +31,7 @@
 	 	},
 
 		components: {
-			'AuthForm': AuthForm,
+			'LoginForm': LoginForm,
 		}
 
 	}

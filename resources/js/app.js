@@ -14,7 +14,7 @@ Vue.use(VueRouter);
 
 import { router } from './routes.js';
 import { store } from './store.js';
-import { userMixin } from './utils/userMixin.js';
+import userMixin from './utils/userMixin.js';
 
 /**
  * The following block of code may be used to automatically register your
@@ -39,5 +39,5 @@ const app = new Vue({
   el: '#app',
   router,
   store,
-  userMixin,
+  mixins: [userMixin],
 });

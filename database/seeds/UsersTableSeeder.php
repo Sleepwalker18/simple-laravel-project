@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,10 +12,23 @@ class UsersTableSeeder extends Seeder
    */
   public function run()
   {
-    DB::table('users')->insert([
-	    'name' => 'John Doe',
-	    'email' => 'john@doe.com',
-	    'password' => Hash::make('password')
-		]);
+
+    $users = [
+      [
+        'name' => 'Israel Arellano',
+        'email' => 'israel@gmail.com',
+        'password' => Hash::make('password')
+      ],
+      [
+        'name' => 'Juan Hernandez',
+        'email' => 'juan@gmail.com',
+        'password' => Hash::make('password')
+      ]
+    ];
+
+    foreach ($users as $user) {
+      User::create($user);
+    }
+
   }
 }
